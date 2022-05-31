@@ -36,15 +36,15 @@ def bilateral_filter(
     sizeX, sizeY = img.shape
     for i in range(kernel_size // 2, sizeX - kernel_size // 2):
         for j in range(kernel_size // 2, sizeY - kernel_size // 2):
- 
-            imgS = get_slice(img, i, j, kernel_size) # spatial 
-            imgI = imgS - imgS[kernel_size // 2, kernel_size // 2] # intensity
-            imgIG = vec_gaussian(imgI, intensity_variance)
-            weights = np.multiply(gaussKer, imgIG)
-            vals = np.multiply(imgS, weights)
-            val = np.sum(vals) / np.sum(weights)
+            imgS = get_slice(img, i, j, kernel_size) # image window
+            imgI = imgS - imgS[kernel_size // 2, kernel_size // 2] # Ip-Iq  substract intensity 
+            imgIG = vec_gaussian(imgI, intensity_variance) # G sigma(r) G(Ip-Tq) compute gaussian distribution for neighboring pixel intensities
+            weights = np.multiply(gaussKer, imgIG) #  weighted avg of pixels Gaussina spactial distribution and gaussian intensity distribution
+            vals = np.multiply(imgS, weights)  # weighted of combination of both the gaussian distributions 
+            val = np.sum(vals) / np.sum(weights) # divide by Wp
             img2[i, j] = val
     return img2
+
 
 image = cv2.imread('../Resources/Photos/park.jpg')
 
