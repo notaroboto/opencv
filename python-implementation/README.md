@@ -26,3 +26,12 @@ formula
 
 <div align="center"><img style="background: white;" src="..\svg\8Nv4iH9hgh.svg"></div>
 
+link : https://python.algorithmexamples.com/web/digital_image_processing/filters/bilateral_filter.html 
+
+# Edge Detection
+
+## Sobel
+___
+
+## canny 
+link : https://www.geeksforgeeks.org/implement-canny-edge-detector-in-python-using-opencv/ 
